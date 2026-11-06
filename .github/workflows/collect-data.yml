@@ -1,0 +1,70 @@
+name: Collect Dashboard Data
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          path: repo
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Collect data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd repo && make collect
+
+      - name: Create release archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TIMESTAMP=$(date -u +"%Y%m%dT%H%M%SZ")
+          TAG="data-${TIMESTAMP}"
+          gh release create "${TAG}" \
+            repo/dashboard-data.json \
+            --repo "${{ github.repository }}" \
+            --title "Dashboard data ${TIMESTAMP}" \
+            --notes "Automated data collection run at ${TIMESTAMP}" \
+            --latest=false
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Copy files to gh-pages
+        run: |
+          cp repo/dashboard-data.json gh-pages/dashboard-data.json
+          cp repo/index.html gh-pages/index.html
+
+      - name: Commit and push to gh-pages
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dashboard-data.json index.html
+          if git diff --staged --quiet; then
+            echo "No changes, skipping commit"
+          else
+            TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+            git commit -m "chore: update dashboard data [${TIMESTAMP}]"
+            git push origin gh-pages
+          fi
