@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06T15:11:09.617694+00:00",
+  "generated_at": "2026-11-06T18:17:11.275737+00:00",
   "repos": [
     {
       "name": "container-cert-manager",
@@ -20,9 +20,9 @@
         "ci_status": "success"
       },
       "check_upstream": {
-        "status": "failure",
-        "url": "https://github.com/gardenlinux/container-cert-manager/actions/runs/42174887477",
-        "run_at": "2026-11-06T06:30:41Z"
+        "status": "success",
+        "url": "https://github.com/gardenlinux/container-cert-manager/actions/runs/42254858915",
+        "run_at": "2026-11-06T16:42:22Z"
       }
     },
     {
