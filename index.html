@@ -89,11 +89,11 @@
           <thead>
             <tr class="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-700">
               <th class="text-left px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">Repository</th>
-              <th class="text-left px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">Current Version</th>
               <th class="text-left px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">GL base image</th>
-              <th class="text-left px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">Pending Update</th>
-              <th class="text-center px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">Check upstream CI</th>
+              <th class="text-left px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">Current Version</th>
               <th class="text-left px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">Released</th>
+              <th class="text-center px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">Check upstream CI status</th>
+              <th class="text-left px-4 py-3 font-semibold text-gray-700 dark:text-gray-300">Pending Update</th>
             </tr>
           </thead>
           <tbody>
@@ -140,6 +140,17 @@
                   </td>
 
                   <td class="px-4 py-3">
+                    <template x-if="repo.base_image_tag">
+                      <span class="font-mono text-xs bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 px-2 py-1 rounded"
+                            x-text="repo.base_image_tag">
+                      </span>
+                    </template>
+                    <template x-if="!repo.base_image_tag">
+                      <span class="text-gray-300 dark:text-gray-600">—</span>
+                    </template>
+                  </td>
+
+                  <td class="px-4 py-3">
                     <template x-if="repo.latest_release">
                       <a :href="repo.latest_release.url" target="_blank" rel="noopener"
                          class="font-mono text-xs bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded
@@ -152,45 +163,12 @@
                     </template>
                   </td>
 
-                  <td class="px-4 py-3">
-                    <template x-if="repo.base_image_tag">
-                      <span class="font-mono text-xs bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 px-2 py-1 rounded"
-                            x-text="repo.base_image_tag">
-                      </span>
+                  <td class="px-4 py-3 text-xs text-gray-500 dark:text-gray-400">
+                    <template x-if="repo.latest_release">
+                      <span x-text="relativeTime(repo.latest_release.published_at)"
+                            :title="repo.latest_release.published_at"></span>
                     </template>
-                    <template x-if="!repo.base_image_tag">
-                      <span class="text-gray-300 dark:text-gray-600">—</span>
-                    </template>
-                  </td>
-
-                  <td class="px-4 py-3">
-                    <template x-if="repo.pending_update">
-                      <span class="inline-flex items-center gap-1.5">
-                        <a :href="repo.pending_update.pr_url" target="_blank" rel="noopener"
-                           class="font-mono text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300
-                                  px-2 py-1 rounded hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
-                           x-text="'v' + repo.pending_update.new_version">
-                        </a>
-                        <!-- inline CI status icon for the update PR -->
-                        <template x-if="repo.pending_update.ci_status === 'success'">
-                          <svg class="h-3.5 w-3.5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" title="PR CI passing">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                          </svg>
-                        </template>
-                        <template x-if="repo.pending_update.ci_status === 'failure'">
-                          <svg class="h-3.5 w-3.5 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" title="PR CI failing">
-                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                          </svg>
-                        </template>
-                        <template x-if="repo.pending_update.ci_status === 'pending'">
-                          <svg class="h-3.5 w-3.5 text-yellow-500 flex-shrink-0 animate-spin" fill="none" viewBox="0 0 24 24" title="PR CI running">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
-                          </svg>
-                        </template>
-                      </span>
-                    </template>
-                    <template x-if="!repo.pending_update">
+                    <template x-if="!repo.latest_release">
                       <span class="text-gray-300 dark:text-gray-600">—</span>
                     </template>
                   </td>
@@ -247,12 +225,34 @@
                     </template>
                   </td>
 
-                  <td class="px-4 py-3 text-xs text-gray-500 dark:text-gray-400">
-                    <template x-if="repo.latest_release">
-                      <span x-text="relativeTime(repo.latest_release.published_at)"
-                            :title="repo.latest_release.published_at"></span>
+                  <td class="px-4 py-3">
+                    <template x-if="repo.pending_update">
+                      <span class="inline-flex items-center gap-1.5">
+                        <a :href="repo.pending_update.pr_url" target="_blank" rel="noopener"
+                           class="font-mono text-xs bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300
+                                  px-2 py-1 rounded hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
+                           x-text="'v' + repo.pending_update.new_version">
+                        </a>
+                        <!-- inline CI status icon for the update PR -->
+                        <template x-if="repo.pending_update.ci_status === 'success'">
+                          <svg class="h-3.5 w-3.5 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" title="PR CI passing">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                          </svg>
+                        </template>
+                        <template x-if="repo.pending_update.ci_status === 'failure'">
+                          <svg class="h-3.5 w-3.5 text-red-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" title="PR CI failing">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                          </svg>
+                        </template>
+                        <template x-if="repo.pending_update.ci_status === 'pending'">
+                          <svg class="h-3.5 w-3.5 text-yellow-500 flex-shrink-0 animate-spin" fill="none" viewBox="0 0 24 24" title="PR CI running">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+                          </svg>
+                        </template>
+                      </span>
                     </template>
-                    <template x-if="!repo.latest_release">
+                    <template x-if="!repo.pending_update">
                       <span class="text-gray-300 dark:text-gray-600">—</span>
                     </template>
                   </td>
