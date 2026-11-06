@@ -16,7 +16,7 @@ GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 ORG = "gardenlinux"
 OUTPUT_FILE = "dashboard-data.json"
 UPDATE_PR_TITLE_RE = re.compile(r"^Release v(.+)$")
-BASE_IMAGE_RE = re.compile(r'BASE_IMAGE="\$\{BASE_IMAGE:-[^"]+:([^"]+)\}"')
+BASE_IMAGE_RE = re.compile(r'BASE_IMAGE="\$\{BASE_IMAGE:-[^"]+/(fips):([^"]+)\}"')
 
 session = requests.Session()
 session.headers.update({
@@ -90,7 +90,7 @@ def get_base_image_tag(repo: str):
     if resp.status_code != 200:
         return None
     match = BASE_IMAGE_RE.search(resp.text)
-    return match.group(1) if match else None
+    return f"{match.group(1)}:{match.group(2)}" if match else None
 
 
 def _rollup_conclusion(workflow_runs: list) -> str:
