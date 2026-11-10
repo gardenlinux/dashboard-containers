@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-10T06:11:28.244081+00:00",
+  "generated_at": "2026-11-10T18:14:17.422527+00:00",
   "repos": [
     {
       "name": "container-cert-manager",
@@ -14,8 +14,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-cert-manager/actions/runs/42633134491",
-        "run_at": "2026-11-09T14:16:53Z"
+        "url": "https://github.com/gardenlinux/container-cert-manager/actions/runs/42768791993",
+        "run_at": "2026-11-10T06:28:59Z"
       }
     },
     {
@@ -31,8 +31,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-crossplane/actions/runs/42630448720",
-        "run_at": "2026-11-09T14:00:16Z"
+        "url": "https://github.com/gardenlinux/container-crossplane/actions/runs/42768994279",
+        "run_at": "2026-11-10T06:30:42Z"
       }
     },
     {
@@ -48,8 +48,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-crossplane-provider-aws/actions/runs/42630455602",
-        "run_at": "2026-11-09T14:00:19Z"
+        "url": "https://github.com/gardenlinux/container-crossplane-provider-aws/actions/runs/42768489081",
+        "run_at": "2026-11-10T06:26:11Z"
       }
     },
     {
@@ -65,8 +65,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-crossplane-provider-btp/actions/runs/42630461159",
-        "run_at": "2026-11-09T14:00:21Z"
+        "url": "https://github.com/gardenlinux/container-crossplane-provider-btp/actions/runs/42768950956",
+        "run_at": "2026-11-10T06:30:22Z"
       }
     },
     {
@@ -82,8 +82,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-envoy/actions/runs/42630468474",
-        "run_at": "2026-11-09T14:00:24Z"
+        "url": "https://github.com/gardenlinux/container-envoy/actions/runs/42768932782",
+        "run_at": "2026-11-10T06:30:13Z"
       }
     },
     {
@@ -99,8 +99,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-fluxcd/actions/runs/42630476212",
-        "run_at": "2026-11-09T14:00:27Z"
+        "url": "https://github.com/gardenlinux/container-fluxcd/actions/runs/42768797993",
+        "run_at": "2026-11-10T06:29:03Z"
       }
     },
     {
@@ -116,8 +116,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-grafana/actions/runs/42630482985",
-        "run_at": "2026-11-09T14:00:29Z"
+        "url": "https://github.com/gardenlinux/container-grafana/actions/runs/42768536952",
+        "run_at": "2026-11-10T06:26:37Z"
       }
     },
     {
@@ -133,8 +133,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-haproxy/actions/runs/42630489622",
-        "run_at": "2026-11-09T14:00:32Z"
+        "url": "https://github.com/gardenlinux/container-haproxy/actions/runs/42768927586",
+        "run_at": "2026-11-10T06:30:10Z"
       }
     },
     {
@@ -150,8 +150,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-opensearch/actions/runs/42630495874",
-        "run_at": "2026-11-09T14:00:34Z"
+        "url": "https://github.com/gardenlinux/container-opensearch/actions/runs/42768747279",
+        "run_at": "2026-11-10T06:28:33Z"
       }
     },
     {
@@ -174,8 +174,8 @@
       },
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-prometheus/actions/runs/42633106891",
-        "run_at": "2026-11-09T14:16:43Z"
+        "url": "https://github.com/gardenlinux/container-prometheus/actions/runs/42768708885",
+        "run_at": "2026-11-10T06:28:12Z"
       }
     }
   ]
