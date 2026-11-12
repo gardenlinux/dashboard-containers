@@ -100,9 +100,11 @@ def _rollup_conclusion(workflow_runs: list) -> str:
     if any(s in ("in_progress", "queued", "waiting", "requested") for s in statuses):
         return "pending"
 
-    failure_conclusions = {"failure", "startup_failure", "action_required", "timed_out"}
+    failure_conclusions = {"failure", "startup_failure", "timed_out"}
     if any(c in failure_conclusions for c in conclusions):
         return "failure"
+    if any(c == "action_required" for c in conclusions):
+        return "approval_required"
 
     if conclusions and all(c == "success" for c in conclusions):
         return "success"
@@ -132,7 +134,9 @@ def get_check_upstream_status(repo: str):
     status = run.get("status")
     if status in ("in_progress", "queued", "waiting", "requested"):
         rollup = "pending"
-    elif conclusion in ("failure", "startup_failure", "action_required", "timed_out"):
+    elif conclusion == "action_required":
+        rollup = "approval_required"
+    elif conclusion in ("failure", "startup_failure", "timed_out"):
         rollup = "failure"
     elif conclusion == "success":
         rollup = "success"
