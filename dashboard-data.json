@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T18:14:40.946673+00:00",
+  "generated_at": "2026-11-14T06:10:30.711018+00:00",
   "repos": [
     {
       "name": "container-cert-manager",
@@ -124,7 +124,11 @@
       "name": "container-haproxy",
       "full_name": "gardenlinux/container-haproxy",
       "url": "https://github.com/gardenlinux/container-haproxy",
-      "latest_release": null,
+      "latest_release": {
+        "version": "v3.4.0",
+        "url": "https://github.com/gardenlinux/container-haproxy/releases/tag/v3.4.0",
+        "published_at": "2026-11-13T18:48:12Z"
+      },
       "base_image_tag": "fips:1877.22",
       "pending_update": null,
       "check_upstream": {
