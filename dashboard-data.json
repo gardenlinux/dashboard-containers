@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T06:11:37.414518+00:00",
+  "generated_at": "2026-11-20T18:15:03.498867+00:00",
   "repos": [
     {
       "name": "container-cert-manager",
@@ -57,19 +57,12 @@
       "full_name": "gardenlinux/container-crossplane-provider-btp",
       "url": "https://github.com/gardenlinux/container-crossplane-provider-btp",
       "latest_release": {
-        "version": "v2.3.1",
-        "url": "https://github.com/gardenlinux/container-crossplane-provider-btp/releases/tag/v2.3.1",
-        "published_at": "2026-11-16T10:46:27Z"
+        "version": "v2.3.2",
+        "url": "https://github.com/gardenlinux/container-crossplane-provider-btp/releases/tag/v2.3.2",
+        "published_at": "2026-11-20T12:28:50Z"
       },
       "base_image_tag": "fips:1877.22",
-      "pending_update": {
-        "pr_number": 6,
-        "pr_title": "Release v2.3.2",
-        "pr_url": "https://github.com/gardenlinux/container-crossplane-provider-btp/pull/6",
-        "new_version": "2.3.2",
-        "head_sha": "0dc95f53b75bfd9457fb6edf059aad73f0f68a78",
-        "ci_status": "approval_required"
-      },
+      "pending_update": null,
       "check_upstream": {
         "status": "success",
         "url": "https://github.com/gardenlinux/container-crossplane-provider-btp/actions/runs/44660021413",
@@ -149,19 +142,12 @@
       "full_name": "gardenlinux/container-opensearch",
       "url": "https://github.com/gardenlinux/container-opensearch",
       "latest_release": {
-        "version": "v3.9.0",
-        "url": "https://github.com/gardenlinux/container-opensearch/releases/tag/v3.9.0",
-        "published_at": "2026-11-04T08:41:26Z"
+        "version": "v3.10.0",
+        "url": "https://github.com/gardenlinux/container-opensearch/releases/tag/v3.10.0",
+        "published_at": "2026-11-20T12:32:18Z"
       },
       "base_image_tag": "fips:1877.22",
-      "pending_update": {
-        "pr_number": 5,
-        "pr_title": "Release v3.10.0",
-        "pr_url": "https://github.com/gardenlinux/container-opensearch/pull/5",
-        "new_version": "3.10.0",
-        "head_sha": "651f38f92d730e4bc0954001b9886ca25e6d7cc3",
-        "ci_status": "approval_required"
-      },
+      "pending_update": null,
       "check_upstream": {
         "status": "success",
         "url": "https://github.com/gardenlinux/container-opensearch/actions/runs/44662872932",
