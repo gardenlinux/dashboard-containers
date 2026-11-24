@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T06:11:43.774508+00:00",
+  "generated_at": "2026-11-24T18:15:05.764475+00:00",
   "repos": [
     {
       "name": "container-cert-manager",
@@ -102,7 +102,7 @@
         "pr_url": "https://github.com/gardenlinux/container-fluxcd/pull/6",
         "new_version": "2.10.1",
         "head_sha": "3d24a329ba4632619f97f952cd6c4750dac622cf",
-        "ci_status": "approval_required"
+        "ci_status": "pending"
       },
       "check_upstream": {
         "status": "success",
@@ -140,8 +140,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-haproxy/actions/runs/45313936622",
-        "run_at": "2026-11-24T02:39:01Z"
+        "url": "https://github.com/gardenlinux/container-haproxy/actions/runs/45425855097",
+        "run_at": "2026-11-24T15:28:08Z"
       }
     },
     {
