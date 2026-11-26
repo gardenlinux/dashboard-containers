@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T18:15:03.910636+00:00",
+  "generated_at": "2026-11-26T06:12:32.535827+00:00",
   "repos": [
     {
       "name": "container-cert-manager",
@@ -14,8 +14,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-cert-manager/actions/runs/45530342925",
-        "run_at": "2026-11-25T02:04:40Z"
+        "url": "https://github.com/gardenlinux/container-cert-manager/actions/runs/45739973714",
+        "run_at": "2026-11-26T02:04:33Z"
       }
     },
     {
@@ -28,11 +28,18 @@
         "published_at": "2026-11-04T08:37:50Z"
       },
       "base_image_tag": "fips:1877.22",
-      "pending_update": null,
+      "pending_update": {
+        "pr_number": 8,
+        "pr_title": "Release v2.5.0",
+        "pr_url": "https://github.com/gardenlinux/container-crossplane/pull/8",
+        "new_version": "2.5.0",
+        "head_sha": "f2f5c8b777bb7fa7364ab16f9d4522f307c8b359",
+        "ci_status": "approval_required"
+      },
       "check_upstream": {
-        "status": "failure",
-        "url": "https://github.com/gardenlinux/container-crossplane/actions/runs/45532563618",
-        "run_at": "2026-11-25T02:23:13Z"
+        "status": "success",
+        "url": "https://github.com/gardenlinux/container-crossplane/actions/runs/45742001446",
+        "run_at": "2026-11-26T02:22:40Z"
       }
     },
     {
@@ -48,8 +55,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-crossplane-provider-aws/actions/runs/45532200692",
-        "run_at": "2026-11-25T02:20:10Z"
+        "url": "https://github.com/gardenlinux/container-crossplane-provider-aws/actions/runs/45741618746",
+        "run_at": "2026-11-26T02:19:16Z"
       }
     },
     {
@@ -65,8 +72,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-crossplane-provider-btp/actions/runs/45532322278",
-        "run_at": "2026-11-25T02:21:10Z"
+        "url": "https://github.com/gardenlinux/container-crossplane-provider-btp/actions/runs/45741730538",
+        "run_at": "2026-11-26T02:20:16Z"
       }
     },
     {
@@ -82,8 +89,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-envoy/actions/runs/45533205743",
-        "run_at": "2026-11-25T02:28:34Z"
+        "url": "https://github.com/gardenlinux/container-envoy/actions/runs/45742568986",
+        "run_at": "2026-11-26T02:27:40Z"
       }
     },
     {
@@ -99,8 +106,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "failure",
-        "url": "https://github.com/gardenlinux/container-fluxcd/actions/runs/45533666919",
-        "run_at": "2026-11-25T02:32:21Z"
+        "url": "https://github.com/gardenlinux/container-fluxcd/actions/runs/45742975468",
+        "run_at": "2026-11-26T02:31:17Z"
       }
     },
     {
@@ -113,11 +120,18 @@
         "published_at": "2026-11-12T12:47:29Z"
       },
       "base_image_tag": "fips:1877.22",
-      "pending_update": null,
+      "pending_update": {
+        "pr_number": 12,
+        "pr_title": "Release v13.3.2",
+        "pr_url": "https://github.com/gardenlinux/container-grafana/pull/12",
+        "new_version": "13.3.2",
+        "head_sha": "9f2a9f08b9c02cbc19e7eabe7b0727dded3a5056",
+        "ci_status": "approval_required"
+      },
       "check_upstream": {
-        "status": "failure",
-        "url": "https://github.com/gardenlinux/container-grafana/actions/runs/45534165692",
-        "run_at": "2026-11-25T02:36:27Z"
+        "status": "success",
+        "url": "https://github.com/gardenlinux/container-grafana/actions/runs/45743453344",
+        "run_at": "2026-11-26T02:35:36Z"
       }
     },
     {
@@ -133,8 +147,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-haproxy/actions/runs/45534570296",
-        "run_at": "2026-11-25T02:39:56Z"
+        "url": "https://github.com/gardenlinux/container-haproxy/actions/runs/45743880372",
+        "run_at": "2026-11-26T02:39:31Z"
       }
     },
     {
@@ -147,11 +161,18 @@
         "published_at": "2026-11-20T12:32:18Z"
       },
       "base_image_tag": "fips:1877.22",
-      "pending_update": null,
+      "pending_update": {
+        "pr_number": 7,
+        "pr_title": "Release v3.10.1",
+        "pr_url": "https://github.com/gardenlinux/container-opensearch/pull/7",
+        "new_version": "3.10.1",
+        "head_sha": "2d72dee4c591e4afddb9a7c677a15513d1775a7a",
+        "ci_status": "approval_required"
+      },
       "check_upstream": {
-        "status": "failure",
-        "url": "https://github.com/gardenlinux/container-opensearch/actions/runs/45534974784",
-        "run_at": "2026-11-25T02:43:25Z"
+        "status": "success",
+        "url": "https://github.com/gardenlinux/container-opensearch/actions/runs/45744354202",
+        "run_at": "2026-11-26T02:43:55Z"
       }
     },
     {
@@ -167,8 +188,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-prometheus/actions/runs/45535599172",
-        "run_at": "2026-11-25T02:48:49Z"
+        "url": "https://github.com/gardenlinux/container-prometheus/actions/runs/45744914417",
+        "run_at": "2026-11-26T02:49:05Z"
       }
     }
   ]
