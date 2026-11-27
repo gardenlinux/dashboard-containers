@@ -11,11 +11,12 @@ import time
 from datetime import datetime, timezone
 
 import requests
+from packaging.version import Version, InvalidVersion
 
 GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 ORG = "gardenlinux"
 OUTPUT_FILE = "dashboard-data.json"
-UPDATE_PR_TITLE_RE = re.compile(r"^Release v(.+)$")
+RELEASE_BRANCH_RE = re.compile(r"^release/v(.+)$")
 BASE_IMAGE_RE = re.compile(r'BASE_IMAGE="\$\{BASE_IMAGE:-[^"]+/(fips):([^"]+)\}"')
 
 session = requests.Session()
@@ -82,7 +83,6 @@ def get_latest_release(repo: str):
 
 
 def get_base_image_tag(repo: str):
-    # Build script is always named build-{appname}-fips.sh
     app_name = repo.removeprefix("container-")
     script = f"build-{app_name}-fips.sh"
     url = f"https://raw.githubusercontent.com/{ORG}/{repo}/main/{script}"
@@ -149,33 +149,56 @@ def get_check_upstream_status(repo: str):
     }
 
 
-def get_pending_update(repo: str):
-    prs = gh_get(
-        f"/repos/{ORG}/{repo}/pulls",
-        {"state": "open", "per_page": 20, "sort": "created", "direction": "desc"},
-    )
-    if not prs:
+def get_pending_update(repo: str, current_version: str):
+    # Step 1+2: find all release/v* branches strictly newer than current release
+    branches = get_all_pages(f"/repos/{ORG}/{repo}/branches")
+    candidates = []
+    try:
+        current_v = Version(current_version.lstrip("v"))
+    except InvalidVersion:
         return None
 
-    for pr in prs:
-        match = UPDATE_PR_TITLE_RE.match(pr["title"])
-        if not match:
+    for b in branches:
+        m = RELEASE_BRANCH_RE.match(b["name"])
+        if not m:
+            continue
+        try:
+            if Version(m.group(1)) > current_v:
+                candidates.append(m.group(1))
+        except InvalidVersion:
             continue
 
-        new_version = match.group(1)
-        head_sha = pr["head"]["sha"]
-        ci_status = get_pr_ci_status(repo, head_sha)
+    if not candidates:
+        return None
 
+    # Step 3: select the newest among candidates
+    newest = str(max(candidates, key=Version))
+    branch = f"release/v{newest}"
+    create_pr_url = (
+        f"https://github.com/{ORG}/{repo}/compare/main...{branch}?expand=1"
+    )
+
+    # Step 4: check if an open PR already targets this branch
+    prs = gh_get(
+        f"/repos/{ORG}/{repo}/pulls",
+        {"state": "open", "head": f"{ORG}:{branch}", "per_page": 5},
+    )
+    if prs:
+        pr = prs[0]
+        head_sha = pr["head"]["sha"]
         return {
+            "new_version": newest,
+            "create_pr_url": create_pr_url,
             "pr_number": pr["number"],
-            "pr_title": pr["title"],
             "pr_url": pr["html_url"],
-            "new_version": new_version,
             "head_sha": head_sha,
-            "ci_status": ci_status,
+            "ci_status": get_pr_ci_status(repo, head_sha),
         }
 
-    return None
+    return {
+        "new_version": newest,
+        "create_pr_url": create_pr_url,
+    }
 
 
 def main():
@@ -186,8 +209,12 @@ def main():
         print(f"Processing {name}...", file=sys.stderr)
         latest_release = get_latest_release(name)
         base_image_tag = get_base_image_tag(name)
-        pending_update = get_pending_update(name)
         check_upstream = get_check_upstream_status(name)
+
+        if latest_release:
+            pending_update = get_pending_update(name, latest_release["version"])
+        else:
+            pending_update = None
 
         repos_data.append({
             "name": name,
