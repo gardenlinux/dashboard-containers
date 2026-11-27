@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T06:12:26.534265+00:00",
+  "generated_at": "2026-11-27T18:15:17.690154+00:00",
   "repos": [
     {
       "name": "container-cert-manager",
@@ -14,8 +14,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-cert-manager/actions/runs/45926199011",
-        "run_at": "2026-11-27T02:04:45Z"
+        "url": "https://github.com/gardenlinux/container-cert-manager/actions/runs/46002885372",
+        "run_at": "2026-11-27T12:56:54Z"
       }
     },
     {
@@ -23,9 +23,9 @@
       "full_name": "gardenlinux/container-crossplane",
       "url": "https://github.com/gardenlinux/container-crossplane",
       "latest_release": {
-        "version": "v2.4.2",
-        "url": "https://github.com/gardenlinux/container-crossplane/releases/tag/v2.4.2",
-        "published_at": "2026-11-04T08:37:50Z"
+        "version": "v2.5.0",
+        "url": "https://github.com/gardenlinux/container-crossplane/releases/tag/v2.5.0",
+        "published_at": "2026-11-27T15:08:38Z"
       },
       "base_image_tag": "fips:1877.22",
       "pending_update": {
@@ -38,8 +38,8 @@
       },
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-crossplane/actions/runs/45928003919",
-        "run_at": "2026-11-27T02:23:06Z"
+        "url": "https://github.com/gardenlinux/container-crossplane/actions/runs/46021678569",
+        "run_at": "2026-11-27T15:05:01Z"
       }
     },
     {
@@ -55,8 +55,8 @@
       "pending_update": null,
       "check_upstream": {
         "status": "success",
-        "url": "https://github.com/gardenlinux/container-crossplane-provider-aws/actions/runs/45927674436",
-        "run_at": "2026-11-27T02:19:48Z"
+        "url": "https://github.com/gardenlinux/container-crossplane-provider-aws/actions/runs/46018471827",
+        "run_at": "2026-11-27T14:43:28Z"
       }
     },
     {
